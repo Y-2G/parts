@@ -1,0 +1,164 @@
+// ==================================================
+// contents
+// ==================================================
+
+@keyframes blink {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.pointer {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+}
+
+.index__main {
+  width: 100%;
+  height: calc(100% - 80px);
+  position: relative;
+  top: 80px;
+
+  .text {
+    font-family: "Courier New", monospace;
+    font-size: 60px;
+    max-width: 660px;
+    height: 120px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .line {
+      display: inline-block;
+      position: relative;
+      height: 60px;
+
+      margin: 0;
+      padding: 0;
+
+      span {
+        vertical-align: middle;
+        display: inline-block;
+      }
+
+      .char {
+        text-align: center;
+        width: 1em;
+      }
+
+      .cursor {
+        width: 1px;
+        height: 60px;
+        background: #000;
+        margin-left: -1px;
+        position: absolute;
+        right: 0;
+      }
+
+      .cursor.blink {
+        animation: blink .5s steps(2, start) infinite alternate;
+      }
+
+    }
+
+  }
+
+}
+
+// ==================================================
+// 700px以下のスタイル
+// ==================================================
+
+@media screen and (max-width: 700px) {
+
+  // ==================================================
+  // contents
+  // ==================================================
+  
+  .index__main {
+
+    .text {
+      font-size: 40px;
+      max-width: 440px;
+
+      .line {
+        height: 40px;
+
+        .cursor {
+          height: 40px;
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+// ==================================================
+// 500px以下のスタイル
+// ==================================================
+
+@media screen and (max-width: 500px) {
+
+  // ==================================================
+  // contents
+  // ==================================================
+  
+  .index__main {
+
+    .text {
+      font-size: 30px;
+      max-width: 330px;
+
+      .line {
+        height: 30px;
+
+        .cursor {
+          height: 30px;
+        }
+
+      }
+
+    }
+  
+  }
+
+}
+
+// ==================================================
+// 500px以下のスタイル
+// ==================================================
+
+@media screen and (max-width: 400px) {
+
+  // ==================================================
+  // contents
+  // ==================================================
+  
+  .index__main {
+    
+    .text {
+      font-size: 20px;
+      max-width: 220px;
+
+      .line {
+        height: 20px;
+
+        .cursor {
+          height: 20px;
+        }
+
+      }
+
+    }
+  
+  }
+  
+}

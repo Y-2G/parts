@@ -1,0 +1,106 @@
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.pointer {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+}
+
+.index__main {
+  width: 100%;
+  height: calc(100% - 80px);
+  position: relative;
+  top: 80px;
+}
+
+.index__main .text {
+  font-family: "Courier New", monospace;
+  font-size: 60px;
+  max-width: 660px;
+  height: 120px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.index__main .text .line {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+}
+
+.index__main .text .line span {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.index__main .text .line .char {
+  text-align: center;
+  width: 1em;
+}
+
+.index__main .text .line .cursor {
+  width: 1px;
+  height: 60px;
+  background: #000;
+  margin-left: -1px;
+  position: absolute;
+  right: 0;
+}
+
+.index__main .text .line .cursor.blink {
+  animation: blink 0.5s steps(2, start) infinite alternate;
+}
+
+@media screen and (max-width: 700px) {
+  .index__main .text {
+    font-size: 40px;
+    max-width: 440px;
+  }
+  .index__main .text .line {
+    height: 40px;
+  }
+  .index__main .text .line .cursor {
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .index__main .text {
+    font-size: 30px;
+    max-width: 330px;
+  }
+  .index__main .text .line {
+    height: 30px;
+  }
+  .index__main .text .line .cursor {
+    height: 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .index__main .text {
+    font-size: 20px;
+    max-width: 220px;
+  }
+  .index__main .text .line {
+    height: 20px;
+  }
+  .index__main .text .line .cursor {
+    height: 20px;
+  }
+}

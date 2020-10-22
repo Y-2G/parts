@@ -1,38 +1,160 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
-    <title>asobiba</title>
-    <link rel="stylesheet" type="text/css" href="../css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>asobiba</title>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../css/common.css">
+  <link rel="stylesheet" type="text/css" href="../css/header.css">
+  <link rel="stylesheet" type="text/css" href="../css/contents.css">
 </head>
 
 <body>
 
-    <header class="index__header">
+  <header class="index__header">
 
-        <h1 class="index__logo">
-            <a href="index.html">asobiba</a>
-        </h1>
+    <h1><a href="index.html">asobiba</a></h1>
 
-        <nav class="index__navi">
-            <input id="checkbox" type="checkbox" style="display: none;">
-            <div class="index__overlay"></div>
-            <label class="index__menu-button" for="checkbox">
-                <div class="index__menu-icon"></div>
-            </label>
-            <ul>
-                <li><a href="home.html">About</a></li>
-                <li><a href="works.html">Works</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </nav>
+    <nav>
+      <input id="checkbox" type="checkbox" style="display: none;">
+      <div class="index__overlay"></div>
+      <label class="index__menu-button" for="checkbox">
+        <div class="index__menu-icon"></div>
+      </label>
+      <ul>
+        <li><a href="home.html">About</a></li>
+        <li><a href="works.html">Works</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </nav>
 
-    </header>
+  </header>
 
-    <div style="width: 100px; height: 1000px"></div>
-    
-    <script src="../script/app.js"></script>
+  <div class="index__main">
+    <div class="text">
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <script src="../script/app.js"></script>
+
+  <script>
+    function init() {
+      const target = document.querySelector('.line');
+
+      const str = 'HELLO WORLD';
+      
+      const cursor = new Cursor(target);
+      cursor.create();
+      cursor.render();
+
+      const writer = new Writer(target, str, cursor);
+      writer.start();
+    }
+
+    class Writer {
+      constructor(target, str, cursor) {
+        this._target = target;
+        this._str = str;
+        this._cursor = cursor;
+        this._chars = null;
+        this._delay = 2500;
+        this._prevTime = 0;
+        this._currentIndex = 0;
+      }
+
+      start() {
+        this._startTime = performance.now();
+        this._chars = this._str.split('');
+        this._cursor.waite();
+        this.tick();
+      }
+
+      stop() {
+        this._cursor.waite();
+      }
+
+      tick() {
+        if(this._currentIndex === this._chars.length) return this.stop();
+
+        requestAnimationFrame(this.tick.bind(this));
+
+        if(performance.now() - this._delay < 0) return;
+        
+        this._cursor.active();
+        
+        if(performance.now() - this._prevTime > 200) {
+          const element = document.createElement('span');
+          element.classList.add('char')
+          element.insertAdjacentHTML('beforeend', this._chars[this._currentIndex])
+          this._target.insertAdjacentElement('beforeend', element);
+
+          // this._cursor.moveX(element.clientWidth);
+          this._currentIndex++;
+
+          this._prevTime = performance.now()
+        }
+      }
+    }
+
+    class Cursor {
+      constructor(target) {
+        this._target = target;
+        this._element = null;
+        this._x = 0;
+        this._y = 0;
+      }
+
+      create() {
+        this._element = document.createElement('span')
+        this._element.classList.add('cursor');
+      }
+
+      render() {
+        this._target.insertAdjacentElement('beforeend', this._element)
+      }
+
+      active() {
+        this.removeCssClass('blink');
+      }
+
+      waite() {
+        this.addCssClass('blink');
+      }
+
+      addCssClass(className) {
+        this._element.classList.add(className);
+      }
+
+      removeCssClass(className) {
+        this._element.classList.remove(className);
+      }
+
+      break() {
+        this.move(this._x * 0, this._element.clientHeight);
+      }
+
+      move(x, y) {
+        this.moveX(x);
+        this.moveY(y);
+      }
+
+      moveX(x) {
+        this._x += x;
+        this._element.style.transform = 'translateX(' + this._x + 'px)';
+      }
+
+      moveY(y) {
+        this._y += y;
+        this._element.style.transform = 'translateY(' + this._y + 'px)';
+      }
+
+    }
+
+    document.addEventListener('load', init(), false);
+  </script>
+
 </body>
 
 </html>
