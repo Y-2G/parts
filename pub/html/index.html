@@ -33,13 +33,21 @@
 
   <div class="index__main">
     <div class="text">
-      <div class="line"></div>
+      <!-- <div class="line"></div> -->
+      <div class="line"><span class="cursor blink"></span><span class="char">H</span><span class="char">E</span><span class="char">L</span><span class="char">L</span><span class="char">O</span><span class="char"> </span><span class="char">W</span><span class="char">O</span><span class="char">R</span><span class="char">L</span><span class="char">D</span></div>
+      <div class="link">
+        <a href="home.html">About</a>
+        <a href="works.html">Works</a>
+        <a href="blog.html">Blog</a>
+      </div>
     </div>
+
   </div>
 
-  <script src="../script/app.js"></script>
+  <!-- <script src="../script/app.js"></script> -->
 
   <script>
+
     function init() {
       const target = document.querySelector('.line');
 
@@ -51,6 +59,30 @@
 
       const writer = new Writer(target, str, cursor);
       writer.start();
+    }
+
+    class Animation {
+      constructor(target) {
+        this._target = target;
+        this._delay = 4000;
+        this._animationId = null;
+      }
+
+      start() {
+        this._startTime = performance.now();
+        this.tick();
+      }
+
+      stop() {
+        cancelAnimationFrame(this._animationId);
+      }
+
+      tick() {
+        this._animationId = requestAnimationFrame(this.tick.bind(this));
+
+        if(performance.now() - this._delay < 0) return;
+
+      }
     }
 
     class Writer {
@@ -67,12 +99,12 @@
       start() {
         this._startTime = performance.now();
         this._chars = this._str.split('');
-        this._cursor.waite();
-        this.tick();
+        this._cursor.wait();
+        // this.tick();
       }
 
       stop() {
-        this._cursor.waite();
+        this._cursor.wait();
       }
 
       tick() {
@@ -119,7 +151,7 @@
         this.removeCssClass('blink');
       }
 
-      waite() {
+      wait() {
         this.addCssClass('blink');
       }
 

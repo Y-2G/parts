@@ -7,16 +7,6 @@
   }
 }
 
-.pointer {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #000;
-  position: absolute;
-  top: 100%;
-  left: 100%;
-}
-
 .index__main {
   width: 100%;
   height: calc(100% - 80px);
@@ -26,21 +16,20 @@
 
 .index__main .text {
   font-family: "Courier New", monospace;
-  font-size: 60px;
   max-width: 660px;
-  height: 120px;
   position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  font-size: 0;
 }
 
 .index__main .text .line {
   display: inline-block;
   position: relative;
   height: 60px;
-  margin: 0;
-  padding: 0;
+  font-size: 60px;
+  margin-bottom: 30px;
 }
 
 .index__main .text .line span {
@@ -66,41 +55,73 @@
   animation: blink 0.5s steps(2, start) infinite alternate;
 }
 
+.index__main .text .link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.index__main .text .link a {
+  display: inline-block;
+  width: 5em;
+  height: 1.5em;
+  line-height: 1.5em;
+  font-size: 30px;
+  letter-spacing: .2em;
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  background: #000;
+}
+
 @media screen and (max-width: 700px) {
   .index__main .text {
-    font-size: 40px;
     max-width: 440px;
   }
   .index__main .text .line {
+    font-size: 40px;
     height: 40px;
   }
   .index__main .text .line .cursor {
     height: 40px;
+  }
+  .index__main .text .link a {
+    font-size: 20px;
   }
 }
 
 @media screen and (max-width: 500px) {
   .index__main .text {
-    font-size: 30px;
     max-width: 330px;
   }
   .index__main .text .line {
+    font-size: 30px;
     height: 30px;
   }
   .index__main .text .line .cursor {
     height: 30px;
+  }
+  .index__main .text .link a {
+    width: 60%;
+    font-size: 18px;
+    margin-bottom: 1em;
   }
 }
 
 @media screen and (max-width: 400px) {
   .index__main .text {
-    font-size: 20px;
     max-width: 220px;
   }
   .index__main .text .line {
+    font-size: 20px;
     height: 20px;
   }
   .index__main .text .line .cursor {
     height: 20px;
+  }
+  .index__main .text .link a {
+    font-size: 14px;
+    width: 100%;
   }
 }

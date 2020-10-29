@@ -7,16 +7,6 @@
   to   { opacity: 0; }
 }
 
-.pointer {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #000;
-  position: absolute;
-  top: 100%;
-  left: 100%;
-}
-
 .index__main {
   width: 100%;
   height: calc(100% - 80px);
@@ -25,21 +15,20 @@
 
   .text {
     font-family: "Courier New", monospace;
-    font-size: 60px;
     max-width: 660px;
-    height: 120px;
+    // height: 120px;
     position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-size: 0;
 
     .line {
       display: inline-block;
       position: relative;
       height: 60px;
-
-      margin: 0;
-      padding: 0;
+      font-size: 60px;
+      margin-bottom: 30px;
 
       span {
         vertical-align: middle;
@@ -66,6 +55,27 @@
 
     }
 
+    .link {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      width: 100%;
+
+      a {
+        display: inline-block;
+        width: 5em;
+        height: 1.5em;
+        line-height: 1.5em;
+        font-size: 30px;
+        letter-spacing: .2em;
+        text-align: center;
+        vertical-align: middle;
+        color: #fff;
+        background: #000;
+      }
+
+    }
+
   }
 
 }
@@ -83,10 +93,10 @@
   .index__main {
 
     .text {
-      font-size: 40px;
       max-width: 440px;
 
       .line {
+        font-size: 40px;
         height: 40px;
 
         .cursor {
@@ -95,6 +105,14 @@
 
       }
 
+      .link {
+  
+        a {
+          font-size: 20px;
+        }
+  
+      }
+  
     }
 
   }
@@ -114,16 +132,26 @@
   .index__main {
 
     .text {
-      font-size: 30px;
       max-width: 330px;
 
       .line {
+        font-size: 30px;
         height: 30px;
 
         .cursor {
           height: 30px;
         }
 
+      }
+
+      .link {
+        
+        a {
+          width: 60%;
+          font-size: 18px;
+          margin-bottom: 1em;
+        }
+  
       }
 
     }
@@ -145,16 +173,25 @@
   .index__main {
     
     .text {
-      font-size: 20px;
       max-width: 220px;
 
       .line {
+        font-size: 20px;
         height: 20px;
 
         .cursor {
           height: 20px;
         }
 
+      }
+
+      .link {
+        
+        a {
+          font-size: 14px;
+          width: 100%;
+        }
+  
       }
 
     }
