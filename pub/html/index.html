@@ -33,8 +33,21 @@
 
   <div class="index__main">
     <div class="text">
-      <!-- <div class="line"></div> -->
-      <div class="line"><span class="cursor blink"></span><span class="char">H</span><span class="char">E</span><span class="char">L</span><span class="char">L</span><span class="char">O</span><span class="char"> </span><span class="char">W</span><span class="char">O</span><span class="char">R</span><span class="char">L</span><span class="char">D</span></div>
+      <!-- <div class="line">
+        <span class="cursor blink"></span>
+        <span class="char">H</span>
+        <span class="char">E</span>
+        <span class="char">L</span>
+        <span class="char">L</span>
+        <span class="char">O</span>
+        <span class="char"> </span>
+        <span class="char">W</span>
+        <span class="char">O</span>
+        <span class="char">R</span>
+        <span class="char">L</span>
+        <span class="char">D</span>
+      </div> -->
+      <div class="line"></div>
       <div class="link">
         <a href="home.html">About</a>
         <a href="works.html">Works</a>
@@ -100,7 +113,7 @@
         this._startTime = performance.now();
         this._chars = this._str.split('');
         this._cursor.wait();
-        // this.tick();
+        this.tick();
       }
 
       stop() {

@@ -7,6 +7,11 @@
   to   { opacity: 0; }
 }
 
+@keyframes appear {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .index__main {
   width: 100%;
   height: calc(100% - 80px);
@@ -16,7 +21,6 @@
   .text {
     font-family: "Courier New", monospace;
     max-width: 660px;
-    // height: 120px;
     position: relative;
     left: 50%;
     top: 50%;
@@ -72,6 +76,8 @@
         vertical-align: middle;
         color: #fff;
         background: #000;
+        opacity: 0;
+        animation: appear .8s ease-in 5s 1 normal forwards;
       }
 
     }
